@@ -1,0 +1,116 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<!-- {if $new_goods} -->
+<script src="themes/<?php echo $GLOBALS['_CFG']['template']; ?>/js/prototype.js" type=text/javascript></SCRIPT>
+<style type="text/css">
+<!--
+.flashbox { width:683px; height:459px; background:url(../images/flashbox_bg.gif) 0 bottom no-repeat}
+.flashbox LI {OVERFLOW: hidden; width:10px; height:10px; float:left; margin-right:5px;}
+.flashbox LI A {DISPLAY: block; width:10px; height:10px; float:left;  background: #eaeaea; }
+.flashbox LI.selected A { background:#9f9f9f}
+.flashbox LI A:hover { background:#9f9f9f}
+.flashbox .tit{ height:27px; padding-top:13px; padding-left:20px;}
+.flashbox .tit img{ float:left}
+.flashbox .tit  #SwitchNav{ float:left; padding-top:5px; padding-right:6px;}
+.flashbox .tit  .f_r{ padding-right:20px;}
+.flashbox .goodsItem{ padding:5px 20px;}
+
+-->
+</style>
+<script src="themes/<?php echo $GLOBALS['_CFG']['template']; ?>/js/changimages.js" type=text/javascript></SCRIPT>
+<DIV class="flashbox box_1" align="center">
+
+<div class="tit">
+<img src="../images/tit_new.gif">
+
+<div class="f_r">
+<UL id=SwitchNav>
+  <LI><a href="#"></a> </LI>
+  <LI><a href="#"></a> </LI>
+  <LI> <a href="#"></a></LI>
+  
+</UL>
+<a href="#" class="more" style="float:left">更多</a>
+</DIV>
+</DIV>
+
+
+
+<div style=" clear:both"></div>
+<DIV id=SwitchBigPic>
+<DIV>
+<!--{foreach from=$new_goods item=goods name=no1}-->
+<!-- {if $smarty.foreach.no1.iteration<9}-->
+<dl class="goodsItem">
+       <a href="{$goods.url}"><img src="{$goods.thumb}" alt="{$goods.name|escape:html}" class="goodsimg" /></a><br />
+       <p><a href="{$goods.url}" title="{$goods.name|escape:html}">{$goods.short_style_name}</a></p>
+       <font class="f1">
+       <!-- {if $goods.promote_price neq ""} -->
+      {$goods.promote_price}
+      <!-- {else}-->
+      {$goods.shop_price}
+      <!--{/if}-->
+       </font>
+</dl>
+  <!--{/if}-->
+<!--{/foreach}-->
+</DIV>
+<DIV>
+<!--{foreach from=$new_goods item=goods name=no2}-->
+<!-- {if $smarty.foreach.no2.iteration>8  & $smarty.foreach.no2.iteration<17}-->
+<dl class="goodsItem">
+       <a href="{$goods.url}"><img src="{$goods.thumb}" alt="{$goods.name|escape:html}" class="goodsimg" /></a><br />
+       <p><a href="{$goods.url}" title="{$goods.name|escape:html}">{$goods.short_style_name}</a></p>
+       <font class="f1">
+       <!-- {if $goods.promote_price neq ""} -->
+      {$goods.promote_price}
+      <!-- {else}-->
+      {$goods.shop_price}
+      <!--{/if}-->
+       </font>
+</dl>
+  <!--{/if}-->
+<!--{/foreach}-->
+</DIV>
+
+
+<DIV>
+<!--{foreach from=$new_goods item=goods name=no3}-->
+<!-- {if $smarty.foreach.no3.iteration>16  & $smarty.foreach.no3.iteration<25}-->
+<dl class="goodsItem">
+       <a href="{$goods.url}"><img src="{$goods.thumb}" alt="{$goods.name|escape:html}" class="goodsimg" /></a><br />
+       <p><a href="{$goods.url}" title="{$goods.name|escape:html}">{$goods.short_style_name}</a></p>
+       <font class="f1">
+       <!-- {if $goods.promote_price neq ""} -->
+      {$goods.promote_price}
+      <!-- {else}-->
+      {$goods.shop_price}
+      <!--{/if}-->
+       </font>
+</dl>
+  <!--{/if}-->
+<!--{/foreach}--></DIV>
+</DIV>
+</DIV>
+<SCRIPT>
+	var bigswitch = new SwitchPic(
+		{
+			bigpic:"SwitchBigPic",
+			switchnav:"SwitchNav",
+			selectstyle:"selected",
+			objname:"bigswitch"
+		}
+	) ;
+	bigswitch.goSwitch(bigswitch,0);
+	bigswitch.autoSwitchTimer = setTimeout("bigswitch.autoSwitch(bigswitch) ;", 3000);
+</SCRIPT>
+
+
+
+
+
+
+
+
+
+ 
+<!-- {/if} -->

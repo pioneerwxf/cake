@@ -1,0 +1,51 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+
+
+
+
+
+
+
+
+
+
+<!-- {if $brand_list} -->
+<div class="box brands_gd">
+ 
+<img style="float:left" src="../images/brands_tit.gif">
+ 
+<a href="brand.php" class="more"  >更多</a>
+
+<div class="blank"></div>
+
+
+
+
+
+
+
+<DIV class="index_bottom clearfix">
+<DIV class="left f_l"><IMG onmouseup=ISL_StopUp() onmouseout=ISL_StopUp() 
+onmousedown=ISL_GoUp() src="../images/gd_l.gif"></DIV>
+<DIV id=pic_scroller class="center f_l">
+<DIV class=rollBox>
+<DIV id=ISL_Cont class=Cont>
+<DIV class=ScrCont>
+<DIV id=List1>
+  <!-- {foreach from=$brand_list item=brand name="brand_foreach"} -->
+      <!-- {if $brand.brand_logo} -->
+        <a href="{$brand.url}"><img src="data/brandlogo/{$brand.brand_logo}" alt="{$brand.brand_name|escape:html} ({$brand.goods_num})" /></a>
+      <!-- {/if} -->
+  <!-- {/foreach} -->
+</DIV>
+<DIV id=List2></DIV></DIV></DIV></DIV></DIV>
+<DIV class="right f_r"><IMG onmouseup=ISL_StopDown() onmouseout=ISL_StopDown() 
+onmousedown=ISL_GoDown() src="../images/gd_r.gif"></DIV>
+</DIV> 
+ 
+<script src="themes/<?php echo $GLOBALS['_CFG']['template']; ?>/js/scoll.js"></script>
+
+</div>
+<div class="blank"></div>
+<!-- {/if} -->

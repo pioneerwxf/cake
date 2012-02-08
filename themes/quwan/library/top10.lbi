@@ -1,0 +1,63 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<div class="box_1 top_10">
+<div class="tit">
+<img src="../images/tit_top10.gif">
+</div>
+
+
+ <div class="boxCenterList2">
+  <!-- {foreach name=no from=$top_goods item=goods name=no}-->
+
+  <ul
+  
+   <!-- {if !$smarty.foreach.no.last} -->
+ style=" border-bottom:1px solid #eaeaea; " 
+<!-- {/if} -->
+  
+  
+   class="clearfix ul_list"  id=top1s{$smarty.foreach.no.iteration} onMouseOver="show_goodspic({$smarty.foreach.no.iteration},'top1')">
+     <div class="iteration2" />
+     {$smarty.foreach.no.iteration}
+     </div>
+    
+      <li  {if $smarty.foreach.no.iteration<2} class="iteration1"{/if} >
+      <a href="{$goods.url}" title="{$goods.name|escape:html}" style="float:left">{$goods.short_name}</a>
+      </li>  
+     </ul>
+     
+  <ul 
+  
+   <!-- {if !$smarty.foreach.no.last} -->
+ style=" border-bottom:1px solid #eaeaea; " 
+<!-- {/if} -->
+  
+  class="clearfix ul_box"  id=top1b{$smarty.foreach.no.iteration} >
+
+     
+     <div class="iteration"/> 
+     {$smarty.foreach.no.iteration}
+     </div>
+     
+     
+      
+      <li class="goodsimg" >
+      <a href="{$goods.url}"><img src="{$goods.thumb}" alt="{$goods.name|escape:html}"  /></a>
+      </li>
+      
+       
+      
+       <li {if $smarty.foreach.no.iteration<2} class="iteration1" {/if} >
+      <div style="height:36px; line-height:18px; margin-bottom:11px;"><a href="{$goods.url}" title="{$goods.name|escape:html}">{$goods.short_name}</a></div>
+     
+      <font class="f1" style="font-weight:bold;" >{$goods.price}</font>
+      </li> 
+      
+    
+ </ul>
+
+    
+  <!-- {/foreach} -->
+   <SCRIPT type=text/javascript> window.onload = show_goodspic(1,'top1');</SCRIPT>
+ </div>
+</div>
+

@@ -1,0 +1,215 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+<script type="text/javascript">
+var process_request = "{$lang.process_request}";
+</script>
+
+
+<?php
+	require_once("themes/quwan/util.php");
+?>
+
+
+<div class="block header_bg" style="overflow:visible" >
+ <div class="f_l" style="padding-top:10px;">
+ <a href="../index.php" name="top"><img style="float:left;" src="../images/logo.gif" /></a>
+</div>
+ 
+ 
+ 
+ <div class="f_r log">
+  {insert_scripts files='transport.js,utils.js'}
+  <ul>
+   <font id="ECS_MEMBERZONE">{* asDangao 提醒您：根据用户id来调用member_info.lbi显示不同的界面  *}{insert name='member_info'} 
+  </ul>
+  
+ <ul class="ul1" onmouseover="this.className='ul1 ul1_on'" onmouseout="this.className='ul1'">
+ <a class="a1" href="user.php">我的账户</a>
+  <div class="ul1_float">
+     <a target="_blank" href="user.php">我的账户</a>
+     <a href="user.php?act=order_list">我的订单</a>
+     <a href="user.php?act=message_list">我的留言</a>
+     <a href="user.php?act=collection_list">我的收藏</a>
+     <a href="user.php?act=affiliate">我的推荐</a>
+  </div>
+ </ul>
+ 
+ 
+ 
+ 
+  <!--{if $navigator_list.top}-->
+    <ul>
+    <!-- {foreach name=nav_top_list from=$navigator_list.top item=nav} -->
+           | <a href="{$nav.url}" <!-- {if $nav.opennew eq 1} --> target="_blank" <!-- {/if} -->>{$nav.name}</a>
+      
+    <!-- {/foreach} -->  
+    </ul>
+   <!-- {/if} -->
+   
+ </div>
+ 
+
+<div class="top_link">
+ <!-- <a href="#"> 免费抽奖 </a>
+ <a href="#"> 新手礼包 </a>-->
+ <a  href="search.php?intro=new"><span class="a1"> 新品 </span></a>
+ <a  href="search.php?intro=promotion"><span class="a2"> 促销  </span></a>
+ <!--<a  href="brand.php"><span class="a3"> 品牌  </span></a>
+ <a  href="exchange.php"><span class="a4"> 礼品  </span></a>-->
+ <img src="../images/service.png"/>
+ </div>
+
+ 
+</div>
+
+
+<div id="mainNav" class="clearfix">
+
+<div style="width:940px;">
+
+
+
+  <ul class="u1" onmouseover="this.className='u1 u1_over '" onmouseout="this.className='u1'"   {if $navigator_list.config.index eq 1} id="cur"{/if}  >
+  <a  class="a1 home_a"  href="../index.php">
+  <img class="ul_l" src="../images/ul_bg_l.gif"><img class="ul_r" src="../images/ul_bg_r.gif"> 
+  {$lang.home} 
+  
+  
+  <img class="dot_l" src="../images/dot.gif">
+  <img class="dot_r" src="../images/dot.gif">
+   </a>
+  </ul>
+
+  
+  
+  <!-- {foreach name=nav_middle_list from=$navigator_list.middle item=nav} -->
+  
+  <img style="float:left; padding:0 10px; "  src="../images/meun_line.gif">
+  <ul class="u1" onmouseover="this.className='u1 u1_over'" onmouseout="this.className='u1'"  {if $nav.active eq 1} id="cur"   {/if} >
+   
+<a class="a1" href="{$nav.url}" {if $nav.opennew eq 1}target="_blank" {/if}>
+<img class="ul_l" src="../images/ul_bg_l.gif"> <img class="ul_r" src="../images/ul_bg_r.gif"> 
+ {$nav.name}
+ 
+  <img class="dot_l" src="../images/dot.gif">
+  <img class="dot_r" src="../images/dot.gif">
+</a>
+
+
+
+
+
+  <?php 
+                  		$subcates = get_subcate_byurl($GLOBALS['smarty']->_var['nav']['url']);
+                 	    if($subcates!=false)
+                        {
+                        	if(count($subcates)>0)
+                            {
+                            	echo "<table cellpadding='0' border='0' cellspacing='0px' class='sub_nav'    ><tr >";
+                                
+                                if($subcates)
+                                {
+                                
+                                
+                                foreach($subcates as $cate)
+                                
+                                
+                                {
+                                echo "<td valign='top'><div style=' width:125px; padding-left:1px;border-top:10px solid #fff'>";
+                                
+                                	echo "<a href='".$cate['url']."'  >".$cate['name']."</a>";
+									
+                                    if($cate['children'])
+                                    {
+                                    foreach($cate['children'] as $subcate)
+                                    {
+                                    	echo "<a href='".$subcate['url']."' class='level_2'>".$subcate['name']."</a>";
+                                    }
+                                    }
+                                    
+                                 echo "</div></td>";    
+                                }
+                                
+                                
+                                }
+                                
+                                echo "</tr></table>";
+                            }
+                        }
+          		   ?>
+  
+  
+  </ul>
+  
+ <!-- {/foreach} -->
+ <div class="meun_float">
+{insert_scripts files='transport.js'}
+<div class="cart" id="ECS_CARTINFO">
+	<!--<div style="float:left; background:url(../images/cat_l.gif) 0 center no-repeat; padding-left:18px; ">
+
+	 {insert name='cart_info'}
+	</div>-->
+	<div style="float:left; padding-top:3px;">
+		<a href="flow.php"><img src="../images/cat_r.gif"></a> 
+	</div>
+</div>
+ 
+ </div>
+</div>
+</div>
+
+<div id="search"  class="clearfix">
+
+
+
+
+
+
+
+
+
+
+
+   <script type="text/javascript">
+    {literal}
+    <!--
+    function checkSearchForm()
+    {
+        if(document.getElementById('keyword').value)
+        {
+            return true;
+        }
+        else
+        {
+           alert("{$lang.no_keywords}");
+            return false;
+        }
+    }
+    -->
+    {/literal}
+    </script>
+   
+
+  <form id="searchForm" name="searchForm" method="get" action="search.php" onSubmit="return checkSearchForm()" class="f_l" style="padding-top:7px;">
+
+  <div style="float:left; border:1px solid #d2d2d2; padding-left:8px; background:url(../images/biao1.gif) 3px center no-repeat; margin-right:5px; margin-left:12px">
+    <input name="keywords" type="text" id="keyword" value="{$search_keywords|escape}" class="B_input" style="width:140px; float:left; background:none; border:none; vertical-align:middle; height:20px; line-height:20px; padding:0 10px; color:#999"/>
+    </div>
+    
+   <input name="imageField" type="submit" value="" class="go" style="cursor:pointer; float:left" />
+   
+ 
+   {if $searchkeywords} 
+    <div class="hot_search">
+   {foreach from=$searchkeywords item=val}
+   <a href="search.php?keywords={$val|escape:url}">{$val}</a>
+   {/foreach}
+   </div>
+   {/if}
+
+   </form>
+</div>
+
+
+<div class="blank5b"></div>
+

@@ -1,0 +1,136 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="Keywords" content="{$keywords}" />
+<meta name="Description" content="{$description}" />
+<!-- TemplateBeginEditable name="doctitle" -->
+<title>{$page_title}</title>
+<!-- TemplateEndEditable -->
+<!-- TemplateBeginEditable name="head" -->
+<!-- TemplateEndEditable -->
+<link rel="shortcut icon" href="favicon.ico" />
+<link rel="icon" href="animated_favicon.gif" type="image/gif" />
+<link href="{$ecs_css_path}" rel="stylesheet" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS|{$page_title}" href="{$feed_url}" />
+{* 包含脚本文件 *}
+{insert_scripts files='common.js'}
+</head>
+<body>
+<!-- #BeginLibraryItem "/library/page_header.lbi" --><!-- #EndLibraryItem -->
+<!-- #BeginLibraryItem "/library/ur_here.lbi" --><!-- #EndLibraryItem -->
+<!--主体内容 start-->
+<div class="block clearfix">
+<!-- {if $cart_goods} 如果有批发商品 -->
+<!-- 批发商品购物车 -->
+<div class="module_2">
+	<h2 class="modTitle tl">
+	 <span class="L"></span><span class="R"></span>
+	 <div class="fl">{$lang.wholesale_goods_cart}</div>
+	</h2>
+	<div class="modContent">
+	 <table width="100%" border="0" cellpadding="5" cellspacing="1" bgcolor="#dddddd">
+          <tr>
+            <th bgcolor="#ffffff">{$lang.goods_name}</th>
+            <th bgcolor="#ffffff">{$lang.goods_attr}</th>
+            <th bgcolor="#ffffff">{$lang.number}</th>
+            <th bgcolor="#ffffff">{$lang.ws_price}</th>
+            <th bgcolor="#ffffff">{$lang.ws_subtotal}</th>
+            <th bgcolor="#ffffff">{$lang.handle}</th>
+          </tr>
+          <!-- {foreach from=$cart_goods key=key item=goods} 循环批发商品开始 -->
+          <tr>
+            <td bgcolor="#ffffff" align="center"><a href="{$goods.goods_url}" target="_blank">{$goods.goods_name}</a></td>
+            <td bgcolor="#ffffff" align="center">{$goods.goods_attr}</td>
+            <td bgcolor="#ffffff" align="center">{$goods.goods_number}</td>
+            <td bgcolor="#ffffff" align="center">{$goods.formated_goods_price}</td>
+            <td bgcolor="#ffffff" align="center">{$goods.formated_subtotal}</td>
+            <td bgcolor="#ffffff" align="center"><a href="wholesale.php?act=drop_goods&key={$key}">{$lang.drop}</a></td>
+          </tr>
+          <!--{/foreach}-->
+        </table>
+   <form method="post" action="wholesale.php?act=submit_order">
+          <table border="0" cellpadding="5" cellspacing="1" width="100%">
+            <tr>
+              <td class="username">{$lang.ws_remark}</td>
+            </tr>
+            <tr>
+              <td><textarea name="remark" rows="4" class="border" style="width:99%; border:1px solid #ccc;"></textarea>
+              </td>
+            </tr>
+            <tr>
+              <td align="center"><input type="submit" class="bnt_number2"  value="{$lang.submit}" /></td>
+            </tr>
+          </table>
+        </form>
+	</div>
+</div>	
+<!-- {/if} -->
+
+<!-- {if $wholesale_list} 如果有批发商品 -->
+<!-- 批发商品购物车 -->
+<div class="module_2">
+	<h2 class="modTitle tl">
+	 <span class="L"></span><span class="R"></span>
+	 <div class="fl">{$lang.wholesale_goods_list}</div><a href="wholesale.php?act=price_list" class="fr" style="margin-right:20px;">{$lang.ws_price_list}</a>
+	</h2>
+	<div class="modContent">
+	<form name="wholesale_goods" action="wholesale.php?act=add_to_cart" method="post">
+          <table width="100%" border="0" cellpadding="5" cellspacing="1" bgcolor="#dddddd">
+            <tr>
+              <th width="200" align="center" bgcolor="#ffffff">{$lang.goods_name}</th>
+              <th width="200" align="center" bgcolor="#ffffff">{$lang.goods_attr}</th>
+              <th width="250" align="center" bgcolor="#ffffff">{$lang.goods_price_ladder}</th>
+              <th width="80" align="center" bgcolor="#ffffff">{$lang.number}</th>
+              <th width="130" align="center" bgcolor="#ffffff">&nbsp;</th>
+            </tr>
+            <!-- {foreach from=$wholesale_list item=wholesale} 循环批发商品开始 -->
+            <tr>
+              <td bgcolor="#ffffff"><a href="{$wholesale.goods_url}" target="_blank" class="f6">{$wholesale.goods_name}</a></td>
+              <td bgcolor="#ffffff">
+
+                <table width="100%" border="0" align="center">
+                  <!-- {foreach from=$wholesale.goods_attr item=property_group key=key} -->
+                  <!-- {foreach from=$property_group item=property} -->
+                  <tr>
+                    <td nowrap="true" style="border-bottom:2px solid #ccc;">{$property.name|escape:html}</td>
+                    <td style="border-bottom:1px solid #ccc;">{$property.value|escape:html}</td>
+                  </tr>
+                  <!-- {/foreach}-->
+                  <!-- {/foreach}-->
+                </table>
+              </td>
+
+              <td bgcolor="#ffffff">
+               <table width="100%" border="0" align="center" cellspacing="1" bgcolor="#547289">
+                <!-- {foreach from=$wholesale.price_ladder key=key item=attr_price} -->
+                  <tr>
+                    <td align="left" nowrap="true" bgcolor="#ffffff" style="padding:5px;">{$lang.number}:{$key}</td>
+                    <td bgcolor="#ffffff" style="padding:5px;">{$lang.ladder_price}:{$attr_price}</td>
+                  </tr>
+                  <!-- {/foreach} -->
+</table>
+              </td>
+              <td align="center" bgcolor="#ffffff" style="padding:5px;">
+              <input name="goods_number[{$wholesale.act_id}]" type="text" class="InputBorder" value="" size="10" /></td>
+              <td bgcolor="#ffffff" align="center">
+              <input name="image" type="submit" onClick="this.form.elements['act_id'].value = {$wholesale.act_id}" class="bnt_number4" value="立即购买" style="margin:8px auto;" />
+              </td>
+            </tr>
+            <!--{/foreach}-->
+          </table>
+          <input type="hidden" name="act_id" value="" />
+        </form>
+	</div>
+</div>
+<!-- {else} -->
+ <div class="tips">{$lang.no_wholesale}</div>	  
+<!-- {/if} -->
+<!-- #BeginLibraryItem "/library/pages.lbi" --><!-- #EndLibraryItem -->
+<!-- #BeginLibraryItem "/library/help.lbi" --><!-- #EndLibraryItem -->
+</div>
+<!--主体内容 end-->
+
+<!-- #BeginLibraryItem "/library/page_footer.lbi" --><!-- #EndLibraryItem -->
+</body>
+</html>

@@ -1,0 +1,22 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<!-- {if $hot_goods}-->
+<div class="module_3L">
+ <div class="module_3R">
+	 <div class="module_3">
+		<span class="l"></span><span class="r"></span>
+		<h4 class="modTitle clearfix">
+		 <div class="L fl"><acronym class="bestTit">{$lang.hot_goods}</acronym></div>
+		</h4>
+		<div class="recommendContent">
+		<!--{foreach from=$hot_goods item=goods}-->
+		<div class="goodsbox">
+			<div class="imgbox"><a href="{$goods.url}"><img src="{$goods.thumb}" alt="{$goods.name|escape:html}" /></a></div>
+			<a href="{$goods.url}" title="{$goods.name|escape:html}">{$goods.short_style_name}</a><br />
+			{$lang.exchange_integral}<font class="price">{$goods.exchange_integral}</font>
+		</div>
+	 <!--{/foreach}-->
+	 </div>
+	 </div>
+ </div>
+</div>
+<!-- {/if} -->

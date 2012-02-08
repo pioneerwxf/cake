@@ -1,0 +1,85 @@
+
+<script src="themes/<?php echo $GLOBALS['_CFG']['template']; ?>/js/jquery1.4.1.js"></script>
+<script src="themes/<?php echo $GLOBALS['_CFG']['template']; ?>/js/hp1.js"></script>
+
+
+<STYLE type=text/css charset="utf-8">
+.slides  a{text-decoration:none}
+.slides {
+	OVERFLOW: hidden; WIDTH: 685px; POSITION: relative; HEIGHT:370px; float:left
+}
+.slide-pic {
+	OVERFLOW: hidden; WIDTH: 685px
+}
+.slide-pic LI {
+	DISPLAY: none
+}
+.slide-pic LI.cur {
+	DISPLAY: block
+}
+.slide-li {
+	LEFT: 0px; BOTTOM: 0px; POSITION: absolute
+}
+.slide-li LI {
+	FLOAT: left; WIDTH: 136px; LINE-HEIGHT: 30px; MARGIN-RIGHT: 1px; HEIGHT: 30px; TEXT-ALIGN: center
+}
+.slide-li A {
+	DISPLAY: block; FONT-SIZE: 12px; WIDTH: 136px; COLOR: #fff; HEIGHT: 30px
+}
+.slide-li .cur A {
+	COLOR: #333; TEXT-DECORATION: none; border-bottom:2px solid #ca0809;HEIGHT:28px
+}
+.slide-li A:hover {
+	COLOR: #333; TEXT-DECORATION: none
+}
+.op LI {
+	BACKGROUND: #666; FILTER: alpha(opacity=70); opacity: 0.7
+}
+.op LI.cur {
+	BACKGROUND: #fff
+}
+.slide-txt SPAN {
+	DISPLAY: none
+}
+</STYLE>
+
+<DIV id=homepage>
+<DIV class=slides name="__DT">
+<UL class=slide-pic>
+  <LI class=cur style="DISPLAY: list-item">
+  <A title="" href="#" target=_blank><IMG height=370 src="media/a1.jpg" width=685></A> 
+  <LI class="" style="DISPLAY: none">
+  <A title="" href="#" target=_blank><IMG height=370 src="media/a2.jpg" width=685></A> 
+  <LI class="" style="DISPLAY: none">
+  <A title="" href="#" target=_blank><IMG height=370 src="media/a3.jpg" width=685></A> 
+   <LI class="" style="DISPLAY: none">
+  <A title="" href="#" target=_blank><IMG height=370 src="media/a4.jpg" width=685></A> 
+   <LI class="" style="DISPLAY: none">
+  <A title="" href="#" target=_blank><IMG height=370 src="media/a5.jpg" width=685></A> 
+  </LI></UL>
+<UL class="slide-li op">
+  <LI class=cur></LI>
+  <LI class=""></LI>
+  <LI class=""></LI>
+  <LI class=""></LI>
+  <LI class=""></LI>
+  
+  </UL>
+<UL class="slide-li slide-txt">
+  <LI class=cur>
+  <A href="#" 
+  target=_blank>  2011感恩特惠 </A></LI>
+  <LI class="">
+  <A href="#" 
+  target=_blank> 初秋浪漫组合 </A></LI>
+  <LI class="">
+  <A href="#" 
+  target=_blank> 生日蛋糕系列 </A></LI>
+  <LI class="">
+  <A href="#" 
+  target=_blank> 过年就吃水果蛋糕 </A></LI>
+  <LI class="">
+  <A href="#" 
+  target=_blank> 超人气爱意浓浓巧克力 </A></LI>
+
+  </UL></DIV></DIV>

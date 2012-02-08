@@ -1,0 +1,16 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<!-- {if $article_categories } -->
+<div class="module_1">
+	<h2 class="modTitle"><span class="L"></span><span class="R"></span>{$lang.article_cat}</h2>
+	<div class="modContent">
+	<!--{foreach from=$article_categories item=cat}-->
+	 <div class="categories">
+	  <acronym class="icon"></acronym><a href="{$cat.url}"><strong>{$cat.name|escape:html}</strong></a><br />
+		<!--{foreach from=$cat.children item=child}-->
+			&nbsp;&nbsp;·<a href="{$child.url}">{$child.name|escape:html}</a><br />
+		<!--{/foreach}-->
+	 </div>
+	  <!--{/foreach}-->
+	</div>
+</div>
+<!--{/if} -->

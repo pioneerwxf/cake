@@ -1,0 +1,9 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<div class="module">
+	<h1 class="modTitle"><p><a href="{$articles_cat.url}">{$articles_cat.name|escape:html}</a></p><a href="{$articles_cat.url}" class="more">more</a></h1>
+	<div class="modContent">
+	 <!--{foreach from=$articles item=article_item}-->
+   <acronym class="icon"></acronym><a href="{$article_item.url}" title="{$article_item.title|escape:html}">{$article_item.short_title|truncate:15}</a><br />
+   <!--{/foreach}-->
+	</div>
+</div>

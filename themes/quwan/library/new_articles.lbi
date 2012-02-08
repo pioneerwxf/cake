@@ -1,0 +1,19 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+
+
+<div class="cat_articles new_article">
+<img src="../images/tit_gonggao.gif" style="float:left">
+<div class="boxCenterList clearfix ">
+<!--{foreach from=$new_articles item=article name=no}-->
+<a style="width:248px;    
+<!-- {if !$smarty.foreach.no.last} -->
+border-bottom:1px solid #eaeaea 
+<!-- {/if} -->   
+ " href="{$article.url}" title="{$article.title|escape:html}">{$article.short_title}</a>
+
+<!--{/foreach}-->
+
+</div>
+</div>
+<div class="blank"></div>

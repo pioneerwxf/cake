@@ -1,0 +1,59 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+<div class="email_list box_1">
+<div class="tit_2">
+<img src="../images/email_tit.gif">
+</div>
+<div style="text-align:center; padding:5px 0 5px 0
+">
+我们会将最新的资讯发送到您的 <br/>
+<div style="text-align:right; padding-right:5px;">
+
+ Email
+    <input type="text" id="user_email"  class="inputBg"  value="输入您的电子邮件地址" onclick="javascript:this.value='';"  />
+    
+    <div class="blank5"></div>
+
+    <input type="button" style="background:url(../images/dingyue.gif); cursor:pointer; width:63px; height:23px; border:none;"   value="" onclick="add_email_list();" />
+  </div>
+    </div>
+ </div>
+
+<div class="blank5"></div>
+<script type="text/javascript">
+var email = document.getElementById('user_email');
+function add_email_list()
+{
+  if (check_email())
+  {
+    Ajax.call('user.php?act=email_list&job=add&email=' + email.value, '', rep_add_email_list, 'GET', 'TEXT');
+  }
+}
+function rep_add_email_list(text)
+{
+  alert(text);
+}
+function cancel_email_list()
+{
+  if (check_email())
+  {
+    Ajax.call('user.php?act=email_list&job=del&email=' + email.value, '', rep_cancel_email_list, 'GET', 'TEXT');
+  }
+}
+function rep_cancel_email_list(text)
+{
+  alert(text);
+}
+function check_email()
+{
+  if (Utils.isEmail(email.value))
+  {
+    return true;
+  }
+  else
+  {
+    alert('{$lang.email_invalid}');
+    return false;
+  }
+}
+</script>

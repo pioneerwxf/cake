@@ -1,0 +1,183 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<script type="text/javascript">
+var process_request = "{$lang.process_request}";
+</script>
+<?php
+	require_once("themes/yanjing/util.php");
+?>
+
+<div class="block header_bg" >
+ <div class="f_l" style="padding-top:10px;">
+ <a href="../index.php" name="top"><img style="float:left;" src="../images/logo.gif" /></a>
+
+ </div>
+ <div class="f_r log">
+  {insert_scripts files='transport.js,utils.js'}
+
+  <ul>
+   <font id="ECS_MEMBERZONE">{* ECSHOP 提醒您：根据用户id来调用member_info.lbi显示不同的界面  *}{insert name='member_info'}</font> 
+  </ul>
+  
+ <ul style="z-index:9999999999" class="ul1" onmouseover="this.className='ul1 ul1_on'" onmouseout="this.className='ul1'">
+ <a class="a1" href="user.php">我的账户</a>
+  <div class="ul1_float">
+     <a target="_blank" href="user.php">我的账户</a>
+     <a href="user.php?act=order_list">我的订单</a>
+     <a href="user.php?act=message_list">我的留言</a>
+     <a href="user.php?act=collection_list">我的收藏</a>
+     <a href="user.php?act=affiliate">我的推荐</a>
+  </div>
+ </ul>
+ 
+ 
+ 
+ 
+  <!--{if $navigator_list.top}-->
+    <ul>
+    <!-- {foreach name=nav_top_list from=$navigator_list.top item=nav} -->
+           | <a href="{$nav.url}" <!-- {if $nav.opennew eq 1} --> target="_blank" <!-- {/if} -->>{$nav.name}</a>
+      
+    <!-- {/foreach} -->  
+    </ul>
+   <!-- {/if} -->
+   
+ </div>
+ <img src="../images/tel.gif" class="tel">
+ 
+</div>
+
+<div id="mainNav_out">
+<div id="mainNav" class="clearfix">
+
+
+<div style="width:940px;">
+
+ <ul class="u1" onmouseover="this.className='u1 u1_over '" onmouseout="this.className='u1'"   >
+ <img class="ul_l" src="../images/ul_bg_l.gif"> 
+ <img class="ul_r" src="../images/ul_bg_r.gif"> 
+  
+  
+  <a class="a1"  href="../index.php">{$lang.home}</a>
+  </ul>
+  
+  
+  
+
+
+  
+  <!-- {foreach name=nav_middle_list from=$navigator_list.middle item=nav} -->
+  <img style="float:left" src="../images/meun_line.gif">
+  <ul class="u1" onmouseover="this.className='u1 u1_over'" onmouseout="this.className='u1'" >
+   <img class="ul_l" src="../images/ul_bg_l.gif"> 
+ <img class="ul_r" src="../images/ul_bg_r.gif"> 
+  
+  <a  class="a1"  href="{$nav.url}" {if $nav.opennew eq 1}target="_blank" {/if}>{$nav.name}</a>
+  
+  
+  <?php 
+                  		$subcates = get_subcate_byurl($GLOBALS['smarty']->_var['nav']['url']);
+                 	    if($subcates!=false)
+                        {
+                        	if(count($subcates)>0)
+                            {
+                            	echo "<div class='sub_nav'>";
+                                
+                                if($subcates)
+                                {
+                                foreach($subcates as $cate)
+                                {
+                                	echo "<a href='".$cate['url']."' class='level_1'>".$cate['name']."</a>";
+									
+                                    if($cate['children'])
+                                    {
+                                    foreach($cate['children'] as $subcate)
+                                    {
+                                    	echo "<a href='".$subcate['url']."' class='level_2'>".$subcate['name']."</a>";
+                                    }
+                                    }
+                                }
+                                }
+                                
+                                echo "</div>";
+                            }
+                        }
+          		   ?>
+  
+  
+  </ul>
+ <!-- {/foreach} -->
+
+ <div class="meun_float">
+{insert_scripts files='transport.js'}
+   <script type="text/javascript">
+   if (Object.prototype.toJSONString){
+      var oldToJSONString = Object.toJSONString;
+      Object.prototype.toJSONString = function(){
+        if (arguments.length > 0){
+          return false;
+        }else{
+          return oldToJSONString.apply(this, arguments);
+        }
+		}
+}
+</script>
+<SCRIPT src="themes/<?php echo $GLOBALS['_CFG']['template']; ?>/js/jquery1.4.1.js" type=text/javascript></SCRIPT>
+ 
+
+ 
+ </div>
+ 
+</div>
+</div>
+</div>
+<div id="search"  class="clearfix">
+
+
+<div class="search_b">
+<a  href="search.php?intro=promotion">超值热卖区</a>
+</div>
+<div class="search_hot">
+    {if $searchkeywords}
+   {$lang.hot_search} ：
+   {foreach from=$searchkeywords item=val}
+   <a href="search.php?keywords={$val|escape:url}">{$val}</a>
+   {/foreach}
+   {/if}
+
+</div>
+
+
+
+
+
+
+   <script type="text/javascript">
+    {literal}
+    <!--
+    function checkSearchForm()
+    {
+        if(document.getElementById('keyword').value)
+        {
+            return true;
+        }
+        else
+        {
+           alert("{$lang.no_keywords}");
+            return false;
+        }
+    }
+    -->
+    {/literal}
+    </script>
+   
+
+  <form id="searchForm" name="searchForm" method="get" action="search.php" onSubmit="return checkSearchForm()" class="f_r">
+  <img src="../images/biao1.gif">
+   <input name="keywords" type="text" id="keyword" value="{$search_keywords|escape}" class="B_input" style="width:137px; vertical-align:middle; height:21px; line-height:21px; padding:0 5px; color:#999"/>
+   <input name="imageField" type="submit" value="" class="go" style="cursor:pointer;" />
+   </form>
+</div>
+
+
+<div class="blank"></div>
+

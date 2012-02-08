@@ -1,0 +1,51 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<!-- {if $promotion_goods} -->
+<div class="box_1 sale_box">
+<div class="tit">
+<a href="../search.php?intro=promotion"><img src="images/tit_sale.gif" /></a>
+</div>
+<div class="clearfix">
+<!--{foreach from=$promotion_goods item=goods name="promotion_foreach"}-->
+{if $smarty.foreach.promotion_foreach.index <= 2}
+<p class="name"><a href="{$goods.url}" title="{$goods.name|escape:html}">{$goods.name|truncate:28} {$goods.brief}</a></p>
+
+
+
+
+<div class="sale_pic"><a href="{$goods.url}">
+<img src="../images/biao_hot.gif" style="position:absolute; right:0; top:0">
+<img alt="{$goods.name|escape:html}" src="{$goods.thumb}" width="231" height="139"></a>
+</div>
+
+
+<div class="price">
+抢购价:<font class="f1">{$goods.promote_price}</font>
+</div>
+
+<div class="market">
+市场价：<span class="market_s">{$goods.market_price}</span>
+</div>
+
+
+<div class="timeBox_l">
+<b>194</b> 人已购买
+</div>
+<div id="time{$goods.goods_id}" s="{$goods.s_time}" e="{$goods.e_time}" n="{$goods.t_now}" class="timeBox">
+正在载入...
+</div>
+
+
+<div class="blank"></div>
+
+<div style="text-align:center;">
+<a href="{$goods.url}"><img alt="去抢购" src="../images/qianggou.gif"></a>
+</div>
+
+ 
+
+{/if}
+ <!--{/foreach}-->
+</div>
+</div>
+<!-- {/if} -->
+<div class="blank"></div>

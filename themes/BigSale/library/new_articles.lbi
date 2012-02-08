@@ -1,0 +1,15 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<div class="module">
+	<h1 class="modTitle"><p>{$lang.new_article}</p></h1>
+	<div class="modContent">
+	  <!-- {if $new_articles} -->
+		<!-- {foreach name=new_articles from=$new_articles item=article} -->
+		<!-- {if $smarty.foreach.new_articles.index lt 3} 限制文章显示数量 -->
+		<acronym class="icon"></acronym>[<a href="{$article.cat_url}">{$article.cat_name}</a>] <a href="{$article.url}" title="{$article.title|escape:html}">{$article.short_title|truncate:15}</a><br />
+		<!-- {/if} -->	
+		<!--{/foreach}-->
+		<!--{else}-->
+		当前没有最新文章！
+		<!-- {/if} -->
+	</div>
+</div>
